@@ -417,7 +417,7 @@ const SubjectToggle: React.FC = () => {
           >
             <FaCalculator
               className="icon-calculator"
-              onPress={() => setCal(true)}
+              onClick={() => setCal(true)}
             />
           </span>
         </span>
