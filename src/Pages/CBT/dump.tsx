@@ -6,7 +6,6 @@ import TwoButtonComponent from "../../components/buttons/MainButton";
 import Calculator from "../../components/calculator/Calculator";
 import { useNavigate } from "react-router-dom";
 import Modal from "../Component/Modal/Modal";
-import ConfettiExplosion from "react-confetti-explosion";
 
 interface Question {
   question: string;
@@ -275,7 +274,6 @@ const SubjectToggle: React.FC = () => {
   const navigate = useNavigate();
 
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isloading, setLoading] = useState(false);
 
   const handleOpenModal = () => {
     setIsModalOpen(true);
@@ -285,117 +283,25 @@ const SubjectToggle: React.FC = () => {
     setIsModalOpen(false);
   };
 
-  interface SubjectQuestionCountProps {
-    subject: string;
-    questions: Question[];
-  }
-
-  const SubjectQuestionCount: React.FC<SubjectQuestionCountProps> = ({
-    subject,
-    questions,
-  }) => {
-    const answeredCount = questions
-      ? questions.filter((question) => question.isAnswered).length
-      : 0;
-    const totalCount = questions ? questions.length : 0;
-
-    return (
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "space-between",
-          alignItems: "center",
-          backgroundColor: "#6610F215",
-          padding: "2px 16px",
-          marginBottom: 8,
-          color: "#6610F2",
-          borderRadius: 16,
-        }}
-      >
-        <span>{subject}</span>
-        <p>
-          {answeredCount} of {totalCount}
-        </p>
-      </div>
-    );
-  };
-
-  const [isExploding, setIsExploding] = useState(false);
-
-  const handleButtonClick = () => {
-    setIsExploding(true); // Trigger the explosion
-    setLoading(true)
-    setTimeout(() => {
-        navigate('/scoring');
-      }, 5000);
-  };
-
   const content = (
     <div>
-      <h3>
-        Confirm you want to <span style={{ color: "#6610F2" }}> Submit</span>{" "}
-        this exam.
-      </h3>{" "}
+      <h3>Confirm you want to submit this exam.</h3>{" "}
       <p className="subject-toggling-subject">
         Confirm you want to submit this exam
       </p>
-      <h4> Total Attempts</h4>
-      <div>
-        {isExploding && (
-          <ConfettiExplosion duration={10000} zIndex={1000000000000000} />
-        )}{" "}
+       {/* Display attempted count for each subject (commented out) */}
+       {Object.keys(Questions).map((index: any) => (
+      <div key={index}>
+        <p>
+          Attempted{" "}
+          {selectedAnswersPerSubject[index] ? selectedAnswersPerSubject[index] : 0}{" "}
+          of{" "}
+        </p>
       </div>
-      <>
-        <SubjectQuestionCount subject="Mathematics" questions={MathQuestions} />
-        <SubjectQuestionCount subject="English" questions={EnglishQuestions} />
-        <SubjectQuestionCount
-          subject="Chemistry"
-          questions={ChemistryQuestions}
-        />
-        <SubjectQuestionCount subject="Biology" questions={BiologyQuestions} />
-      </>
-      <span>
-        <br /> <br />
-        <span style={{ width: "100%" }}>
-          <button
-            style={{
-              width: "100%",
-              padding: 16,
-              borderRadius: 16,
-              border: "2px solid #6610F2",
-              fontFamily: "var(--fontFamily)",
-              fontSize: 16,
-              color: "#6610F2",
-              backgroundColor: "#fff",
-              marginBottom: 8,
-            }}
-          >
-            Cancel
-          </button>
-
-          {/* Render the explosion when isExploding is true */}
-          <button
-            style={{
-              width: "100%",
-              padding: 16,
-              borderRadius: 16,
-              border: "none",
-              fontFamily: "var(--fontFamily)",
-              fontSize: 16,
-              color: "white",
-              background: "linear-gradient(to right, #6610F2, #F21098)",
-              marginBottom: 16,
-            }}
-            onClick={handleButtonClick} // Call handleButtonClick when the button is clicked
-          >
-            {isloading ? <span className="loader"></span> : "Submit"}
-          </button>
-        </span>
-      </span>
+    ))} 
+    
     </div>
   );
-
   return (
     <div style={{ margin: 12, userSelect: "none" }}>
       <Modal

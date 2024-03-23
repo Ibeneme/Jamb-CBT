@@ -90,14 +90,13 @@
   border-radius: 24px;
   width: 24px;
   height: 24px;
+  cursor: pointer;
 }
 
-.div-question-and-calculator{
-    display: flex;
-    flex-direction: row-reverse;
-    justify-content: space-between;
-    margin-right: 48px;
-
+.div-question-and-calculator {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
 }
 @keyframes spin {
   from {
@@ -112,6 +111,41 @@
   animation: spin infinite 2s linear;
 }
 
+.loader {
+  width: 16px;
+  height: 16px;
+  border: 3px solid #ffffff45;
+  border-bottom-color: #fff;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .subject-toggling-subject {
+    font-family: var(--fontFamily);
+    font-size: 14px;
+    margin-top: -16px;
+    max-width: 500px;
+    color: #808080;
+    margin-bottom: 62px;
+  }
+  .div-question-and-calculator {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: space-between;
+  }
+}
 @media screen and (max-width: 500px) {
   .subject-toggling-buttons {
     display: flex;
@@ -126,6 +160,12 @@
     border: none;
     margin-left: 0px;
     font-size: 12px;
+  }
+
+  .div-question-and-calculator {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: space-between;
   }
 
   .subject-toggling {
@@ -144,7 +184,7 @@
     font-family: var(--fontFamily);
     font-size: 14px;
     margin-top: -16px;
-    max-width: 800px;
+    max-width: 400px;
     color: #808080;
     margin-bottom: 62px;
   }

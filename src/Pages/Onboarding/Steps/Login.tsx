@@ -48,14 +48,14 @@ const SignUp = () => {
       console.log("Form submitted:", { email, password });
     }
   };
-  const gradientStyle = {
-    backgroundImage: "linear-gradient(to right, #6610F2, #F21098)",
-    WebkitBackgroundClip: "text",
-    WebkitTextFillColor: "transparent",
-    marginTop: -16,
-    marginBottom: 64,
-    fontSize: 14,
-  };
+  //   const gradientStyle = {
+  //     backgroundImage: "linear-gradient(to right, #6610F2, #F21098)",
+  //     WebkitBackgroundClip: "text",
+  //     WebkitTextFillColor: "transparent",
+  //     marginTop: -16,
+  //     marginBottom: 64,
+  //     fontSize: 14,
+  //   };
 
   const handleHover = (event: any) => {
     event.target.style.background = "#6610F2";
@@ -71,20 +71,25 @@ const SignUp = () => {
       <div className="image-container">
         <img className="Image-Image" src={logo} alt="Image" />
       </div>
-      <div className="form-container">
+      <div
+        className="form-containers"
+        style={{ padding: 12 }}
+      >
         <div className="div-forms">
-          <h2
+          <h2 style={{ fontSize: 30, marginBottom: 14 }}>Get Started</h2>
+          <p
             style={{
-              marginBottom: 14,
-              marginTop: 120,
+              backgroundImage: "linear-gradient(to right, #6610F2, #F21098)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              marginTop: -16,
+              marginBottom: 64,
+              fontSize: 14,
             }}
           >
-            Get started
-          </h2>
-          <p style={gradientStyle}>
-            Login your Acadaboo account to get started
+            Login to Get Started
           </p>
-        </div>{" "}
+        </div>
         <form onSubmit={handleSubmit}>
           <TextInput
             label="Email:"
@@ -97,18 +102,17 @@ const SignUp = () => {
             error={emailError}
             required
           />
-          <div className="div-forms">
-            <PasswordInput
-              label="Password:"
-              value={password}
-              onChange={handlePasswordChange}
-              id="password"
-              name="password"
-              placeholder="Password"
-              error={passwordError}
-              required
-            />
-          </div>
+
+          <PasswordInput
+            label="Password:"
+            value={password}
+            onChange={handlePasswordChange}
+            id="password"
+            name="password"
+            placeholder="Password"
+            error={passwordError}
+            required
+          />
 
           <button
             style={{

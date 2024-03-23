@@ -13,7 +13,7 @@ const Subjects = () => {
   const [selectedDuration, setSelectedDuration] = useState(null);
   const [selectedQuestions, setSelectedQuestions] = useState(null);
   const navigate = useNavigate();
-  
+
   const handleModalClose = () => {
     setIsModalOpen(false);
   };
@@ -58,7 +58,7 @@ const Subjects = () => {
         style={{
           backgroundImage: `url(${backgroundImage})`,
           backgroundSize: "contain",
-          padding: "24px",
+          padding: "24.4px",
           marginBottom: "12px",
           cursor: cursorStyle,
           width: "94%",
@@ -120,7 +120,8 @@ const Subjects = () => {
             className="subject-container"
             style={{
               display: "flex",
-              flexWrap: "wrap",
+              flexDirection: "column",
+              //flexWrap: "wrap",
               justifyContent: "space-between", // Ensure equal spacing between items
             }}
           >
@@ -174,8 +175,16 @@ const Subjects = () => {
         onClose={handleModalClose}
         ifClose
         formContent={
-          <div>
-            <h3 style={{ fontSize: 24, marginBottom: 14, marginTop: 24 }}>
+          <div className="mo-width">
+            {" "}
+            <h3
+              style={{
+                fontSize: 24,
+
+                marginBottom: 14,
+                marginTop: 24,
+              }}
+            >
               Select Preferred Options
             </h3>
             <p
@@ -190,16 +199,14 @@ const Subjects = () => {
             >
               Select options to begin CBT
             </p>
-
             <h3 style={{ fontSize: 16, color: "#808080", marginTop: 48 }}>
               Select Year
             </h3>
-
             <div
               className="options-container"
               style={{ display: "flex", gap: 12 }}
             >
-              {[2020, 2021, 2022, 2023, 2024].map((year) => (
+              {[2021, 2022, 2023, 2024].map((year) => (
                 <div
                   key={year}
                   style={{
@@ -279,7 +286,6 @@ const Subjects = () => {
                 </div>
               ))}
             </div>
-
             <div style={{ marginTop: 48 }}></div>
             <button
               style={{

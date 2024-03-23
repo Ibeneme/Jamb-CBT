@@ -5,7 +5,14 @@
   padding: 24px;
   height: fit-content;
   transition: 0.53s;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-right: 48px
+
 }
+
 .calculator-input {
   padding: 12px;
   /* border: none; */
